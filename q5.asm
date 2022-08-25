@@ -1,3 +1,18 @@
+addi x10, x0, 80
+sb x10, 1024(x0)
+addi x10, x0, 76
+sb x10, 1024(x0)
+addi x10, x0, 65
+sb x10, 1024(x0)
+addi x10,x0,  89
+sb x10, 1024(x0)
+addi x10,x0,  32
+sb x10, 1024(x0)
+addi x10,x0,  49
+sb x10, 1024(x0)
+addi x10,x0,  58
+sb x10, 1024(x0)
+
 # A LEITURA DA PALAVRA SÓ É INTERROMPIDA QUANDO ACHA UM ESPAÇO, ENTÃO FINALIZE AS PALAVRAS COM UM ESPAÇO
 addi x12, x0, -1
 soma:
@@ -155,21 +170,45 @@ bne x13, x14, loop
 addi x28, x0, 10
 sb x13, 1024(x0)
 
-blt x12, x28, prt # checa se é maior que 10
+add x25, x0, x12
+blt x25, x28, prt # checa se é maior que 10
+addi x10,x0,  193
+sb x10, 1024(x0)
 div:
    addi x29, x29, 1
-   addi x12, x12, -10
-   bge x12, x28, div
+   addi x25, x25, -10
+   bge x25, x28, div
 addi x29, x29, 48 # printa a casa dos decimos
 sb x29, 1024(x0)
 prt:
-addi x12, x12, 48
-sb x12, 1024(x0) # printa as unidades
+addi x25, x25, 48
+sb x25, 1024(x0) # printa as unidades
 
+addi x10,x0,  32
+sb x10, 1024(x0)
+addi x10,x0,  47
+sb x10, 1024(x0)
+addi x10,x0,  32
+sb x10, 1024(x0)
+
+addi x10, x0, 80
+sb x10, 1024(x0)
+addi x10, x0, 76
+sb x10, 1024(x0)
+addi x10, x0, 65
+sb x10, 1024(x0)
+addi x10,x0,  89
+sb x10, 1024(x0)
+addi x10,x0,  32
+sb x10, 1024(x0)
+addi x10,x0,  50
+sb x10, 1024(x0)
+addi x10,x0,  58
+sb x10, 1024(x0)
 
 
 # A LEITURA DA PALAVRA SÓ É INTERROMPIDA QUANDO ACHA UM ESPAÇO, ENTÃO FINALIZE AS PALAVRAS COM UM ESPAÇO
-addi x15, x0, -28
+addi x15, x0, -1
 dsoma:
 addi x15, x15, 1
 jal x1, dend
@@ -198,7 +237,7 @@ dsoma10:
 addi x15, x15, 10
 jal x1, dend
 
-loop:
+loop2:
 lb x16, 1025(x0) 
 sb x16, 1024(x0)
 # letras maiusculas
@@ -320,76 +359,74 @@ jal x1, dsoma10
 
 dend:
 addi x14, x0, 32 # muda a variavel de controle para o valor de ' ' para saber se a palavra acabou
-bne x16, x14, loop
+bne x16, x14, loop2
 
 addi x28, x0, 10
 sb x16, 1024(x0)
 
-blt x15, x28, dprt # checa se é maior que 10
+add x25, x0, x15
+blt x25, x28, dprt # checa se é maior que 10
+addi x10,x0,  193
+sb x10, 1024(x0)
 divi:
    addi x27, x27, 1
-   addi x15, x15, -10
-   bge x15, x28, divi
+   addi x25, x25, -10
+   bge x25, x28, divi
 addi x27, x27, 48 # printa a casa dos decimos
 sb x27, 1024(x0)
 dprt:
-addi x15, x15, 48
-sb x15, 1024(x0) # printa as unidades
+addi x25, x25, 48
+sb x25, 1024(x0) # printa as unidades
 
+bne x15, x12, notEmpate
+# printa a string empate
+addi x10, x0, 32
+sb x10, 1024(x0)
+addi x10, x0, 69
+sb x10, 1024(x0)
+addi x10, x0, 77
+sb x10, 1024(x0)
+addi x10, x0, 80
+sb x10, 1024(x0)
+addi x10,x0,  65
+sb x10, 1024(x0)
+addi x10,x0,  84
+sb x10, 1024(x0)
+addi x10,x0,  89
+halt
 
-addi x10, x0, 106
+# printa o vencedor (play 1)
+notEmpate:
+blt x12, x15, winPlay2
+addi x10, x0, 32
 sb x10, 1024(x0)
-addi x10, x0, 111
+addi x10, x0, 80
 sb x10, 1024(x0)
-addi x10, x0, 103
+addi x10, x0, 76
 sb x10, 1024(x0)
-addi x10,x0,  97
+addi x10, x0, 65
 sb x10, 1024(x0)
-addi x10, x0, 100
-sb x10, 1024(x0)
-addi x10, x0, 111
-sb x10, 1024(x0)
-addi x10, x0, 114
+addi x10,x0,  89
 sb x10, 1024(x0)
 addi x10,x0,  32
 sb x10, 1024(x0)
 addi x10,x0,  49
 sb x10, 1024(x0)
-addi x10,x0,  58
-sb x10, 1024(x0)
-add x11, x0,  x12 # carrega a pontuação do jog 1
-sb x11, 1024(x0)
+halt
 
-addi x10,x0,  32
+# printa o vencedor (play 2)
+winPlay2:
+addi x10, x0, 32
 sb x10, 1024(x0)
-addi x10,x0,  47
+addi x10, x0, 80
 sb x10, 1024(x0)
-addi x10,x0,  32
+addi x10, x0, 76
 sb x10, 1024(x0)
-
-addi x10, x0, 106
+addi x10, x0, 65
 sb x10, 1024(x0)
-addi x10, x0, 111
-sb x10, 1024(x0)
-addi x10, x0, 103
-sb x10, 1024(x0)
-addi x10,x0,  97
-sb x10, 1024(x0)
-addi x10, x0, 100
-sb x10, 1024(x0)
-addi x10, x0, 111
-sb x10, 1024(x0)
-addi x10, x0, 114
+addi x10,x0,  89
 sb x10, 1024(x0)
 addi x10,x0,  32
 sb x10, 1024(x0)
 addi x10,x0,  50
 sb x10, 1024(x0)
-addi x10,x0,  58
-sb x10, 1024(x0)
-add x11, x0,  x15 # carrega a pontuação do jog 2
-sb x11, 1024(x0)
-
-
-
-

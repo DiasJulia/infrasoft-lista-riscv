@@ -1,6 +1,8 @@
 lw x10, a
 lw x11, b
-add x12, x10, x11
+sub x12, x10, x11
+# como no caso de a ser igual a b a subtração b - a daria sempre 0, a - b supre todos os casos do codigo descrito
 halt
-a: .word 0x5
-b: .word 0x9
+a: .word 15
+b: .word 7
+

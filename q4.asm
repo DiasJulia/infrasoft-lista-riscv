@@ -8,7 +8,7 @@ sb x10, 1024(x0)
 # letras maiusculas
 addi x11, x0, 65 # muda a variavel de controle para o valor de 'A'
 beq x10, x11, soma # confere se é volgal
-addi x11, x0, 68 # muda a variavel de controle para o valor de 'E'
+addi x11, x0, 69 # muda a variavel de controle para o valor de 'E'
 beq x10, x11, soma # confere se é volgal
 addi x11, x0, 73 # muda a variavel de controle para o valor de 'I'
 beq x10, x11, soma # confere se é volgal
@@ -23,7 +23,7 @@ addi x11, x0, 101 # muda a variavel de controle para o valor de 'e'
 beq x10, x11, soma # confere se é volgal
 addi x11, x0, 105 # muda a variavel de controle para o valor de 'i'
 beq x10, x11, soma # confere se é volgal
-addi x11, x0, 7111 # muda a variavel de controle para o valor de 'o'
+addi x11, x0, 111 # muda a variavel de controle para o valor de 'o'
 beq x10, x11, soma # confere se é volgal
 addi x11, x0, 117 # muda a variavel de controle para o valor de 'u'
 beq x10, x11, soma # confere se é volgal
